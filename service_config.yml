@@ -1,0 +1,7 @@
+flex:
+  version: 0.5.6
+  workflows:
+    provision-project:
+      command: ./provision-project.sh
+service:
+  name: development-infrastructure
