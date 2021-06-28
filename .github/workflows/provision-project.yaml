@@ -7,3 +7,9 @@ on:
           default: 'warning'
         tags:
           description: 'Test scenario tags'
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        steps:
+
+        - name: echo "Hello, World!"
