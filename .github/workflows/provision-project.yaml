@@ -38,3 +38,9 @@ jobs:
             fetch-depth: 0
         - name: Provision
           run: $flex provision-project
+        - name: Cache files
+          uses: actions/cache@v2
+          with:
+            path: |
+              google-cloud-sdk
+            key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
