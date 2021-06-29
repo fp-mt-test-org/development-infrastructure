@@ -82,9 +82,9 @@ gcloud auth activate-service-account --key-file="${key_file_path}" --project="${
 
 # gcloud auth activate-service-account test-service-account@google.com --key-file=/path/key.json --project=testproject
 
-kubectl config view 
+# kubectl config view 
 
-kubectl cluster-info
+# kubectl cluster-info
 
 kubectl get namespaces
 
