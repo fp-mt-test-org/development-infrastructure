@@ -37,7 +37,7 @@ fi
 brew install kubectl 
 
 key_file_path='key.json'
-"${gcloud_service_account}" > "${key_file_path}"
+echo "${gcloud_service_account}" > "${key_file_path}"
 gcloud auth activate-service-account "${gcloud_account}" --key-file="${key_file_path}" --project="${gcloud_project}"
 
 
