@@ -4,37 +4,22 @@ set -o errexit
 set -o pipefail
 set -o nounset
 
-if [[ "${project_name:=}" == "" ]]; then
-    echo "project_name value is missing, please specify it to run:"
-    echo
-    echo "   project_name=cool-proj ... flex provision-project"
-    echo
-    exit 1
-fi
+validate() {
+    param_value=$(eval "echo \${${1}:=}")
 
-if [[ "${artifactory_base_url:=}" == "" ]]; then
-    echo "artifactory_base_url value is missing, please specify it to run:"
-    echo
-    echo "   artifactory_base_url=https://artifactory.base.url ... flex provision-project"
-    echo
-    exit 1
-fi
+    if [[ "${param_value}" == "" ]]; then
+        echo "$1 value is missing, please specify it to run:"
+        echo
+        echo "   $1=cool-proj ... flex provision-project"
+        echo
+        exit 1
+    fi
+}
 
-if [[ "${artifactory_username:=}" == "" ]]; then
-    echo "artifactory_username value is missing, please specify it to run:"
-    echo
-    echo "   artifactory_username=username ... flex provision-project"
-    echo
-    exit 1
-fi
-
-if [[ "${artifactory_password:=}" == "" ]]; then
-    echo "artifactory_password value is missing, please specify it to run:"
-    echo
-    echo "   artifactory_password=username ... flex provision-project"
-    echo
-    exit 1
-fi
+validate "project_name" 
+validate "artifactory_base_url"
+validate "artifactory_username"
+validate "artifactory_password"
 
 terraform_path="$(realpath ./terraform)"
 
