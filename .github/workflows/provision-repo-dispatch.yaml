@@ -1,3 +1,49 @@
 on:
     repository_dispatch:
         types: [provision-project]
+        
+        inputs:
+            projectName:
+                description: 'Name of the project to create.'     
+                required: true
+            requestToken:
+                description: 'A valid provision token.'
+                required: true
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        env:
+            flex: ./flex.sh
+
+            artifactory_base_url: ${{ secrets.artifactory_base_url }}
+            artifactory_username: ${{ secrets.artifactory_username }}
+            artifactory_password: ${{ secrets.artifactory_password }}
+            
+            gcloud_account: ${{ secrets.gcloud_account }}
+            gcloud_project: ${{ secrets.gcloud_project }}
+            gcloud_service_account: ${{ secrets.gcloud_service_account }}
+
+            k8s_user: ${{ secrets.k8s_user }}
+            k8s_cluster_name: ${{ secrets.k8s_cluster_name }}
+            k8s_cluster_server: ${{ secrets.k8s_cluster_server }}
+            k8s_cluster_certificate_authority_data: ${{ secrets.k8s_cluster_certificate_authority_data }}
+
+            project_name: ${{ github.event.inputs.projectName }}
+            
+            provision_token: ${{ secrets.provision_token }}
+            request_token: ${{ github.event.inputs.requestToken }}
+
+        steps:
+        - name: Checkout Source
+          uses: actions/checkout@v2
+          with:
+            fetch-depth: 0
+        - name: Cache files
+          uses: actions/cache@v2
+          with:
+            path: |
+              google-cloud-sdk
+              /home/linuxbrew/.linuxbrew/Cellar
+            key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}            
+        - name: Provision
+          run: $flex provision-project
