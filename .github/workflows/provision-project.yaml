@@ -19,6 +19,7 @@ jobs:
             
             gcloud_account: ${{ secrets.gcloud_account }}
             gcloud_project: ${{ secrets.gcloud_project }}
+            gcloud_service_account: ${{ secrets.gcloud_service_account }}
 
             k8s_user: ${{ secrets.k8s_user }}
             k8s_cluster_name: ${{ secrets.k8s_cluster_name }}
