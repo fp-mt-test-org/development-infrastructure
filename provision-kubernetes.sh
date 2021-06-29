@@ -68,6 +68,10 @@ users:
 mkdir -p "${kube_path}"
 echo "${kube_config}" > "${config_path}"
 
+gcloud_config="[core]
+account = ${gcloud_account}
+project = ${gcloud_project}"
+echo "${gcloud_config}" > "${HOME}/.config/gcloud/configurations/config_default"
 kubectl config view --kubeconfig "${config_path}"
 
 kubectl get namespaces --kubeconfig "${config_path}"
