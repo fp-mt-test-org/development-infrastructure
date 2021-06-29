@@ -33,13 +33,13 @@ fi
 # "${gcloud}" components install kubectl
 
 # echo "Setting up kubectl with creds..."
-# "${gcloud}" container clusters get-credentials cluster-1 --zone us-west1-a --project praxis-flight-317920
+
 brew install kubectl 
 
 key_file_path='key.json'
 echo "${gcloud_service_account}" > "${key_file_path}"
 gcloud auth activate-service-account --key-file="${key_file_path}" --project="${gcloud_project}"
-
+gcloud container clusters get-credentials cluster-1 --zone us-west1-a --project="${gcloud_project}"
 
 # kube_path="$(realpath .kube)"
 # config_path="${kube_path}/config"
