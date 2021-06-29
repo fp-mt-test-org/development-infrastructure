@@ -6,6 +6,8 @@ set -o nounset
 
 echo "Installing gcloud..."
 
+ls -la /usr/local/Cellar
+
 google_sdk_path='./google-cloud-sdk'
 filename='google-cloud-sdk-346.0.0-darwin-x86_64.tar.gz'
 
@@ -21,7 +23,7 @@ else
     echo
 fi
 
-brew install kubectl 
+brew install kubectl
 
 key_file_path='key.json'
 echo "${gcloud_service_account}" > "${key_file_path}"
@@ -29,6 +31,8 @@ gcloud auth activate-service-account --key-file="${key_file_path}" --project="${
 gcloud container clusters get-credentials cluster-1 --zone us-west1-a --project="${gcloud_project}"
 
 kubectl get namespaces
+
+ls -la /usr/local/Cellar
 
 echo
 echo "Provisioning of Kubernetes completed successfully!"
