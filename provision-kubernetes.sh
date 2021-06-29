@@ -6,8 +6,6 @@ set -o nounset
 
 echo "Installing gcloud..."
 
-ls -la /usr/local/Cellar
-
 google_sdk_path='./google-cloud-sdk'
 filename='google-cloud-sdk-346.0.0-darwin-x86_64.tar.gz'
 
