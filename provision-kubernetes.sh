@@ -82,9 +82,11 @@ gcloud auth activate-service-account --key-file="${key_file_path}" --project="${
 
 # gcloud auth activate-service-account test-service-account@google.com --key-file=/path/key.json --project=testproject
 
-kubectl config view --kubeconfig "${config_path}"
+kubectl config view 
 
-kubectl cluster-info --kubeconfig "${config_path}"
+kubectl cluster-info
+
+kubectl get namespaces
 
 echo
 echo "Provisioning of Kubernetes completed successfully!"
