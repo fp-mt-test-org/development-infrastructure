@@ -4,15 +4,24 @@ on:
         projectName:
           description: 'Name of the project to create.'     
           required: true
+        requestToken:
+          description: 'A valid provision token.'
+          required: true
 jobs:
     test:
         runs-on: ubuntu-latest
         env:
             flex: ./flex.sh
-            project_name: ${{ github.event.inputs.projectName }}
+
             artifactory_base_url: ${{ secrets.artifactory_base_url }}
             artifactory_username: ${{ secrets.artifactory_username }}
             artifactory_password: ${{ secrets.artifactory_password }}
+            
+            project_name: ${{ github.event.inputs.projectName }}
+            
+            provision_token: ${{ secrets.provision_token }}
+            request_token: ${{ github.event.inputs.requestToken }}
+
         steps:
         - name: Checkout Source
           uses: actions/checkout@v2

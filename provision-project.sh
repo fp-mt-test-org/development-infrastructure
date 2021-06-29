@@ -16,6 +16,14 @@ validate() {
     fi
 }
 
+validate "request_token"
+validate "provision_token"
+
+if [[ "${request_token}" != "${provision_token}" ]]; then
+    echo "Invalid request_token"
+    exit 1
+fi
+
 validate "project_name" 
 validate "artifactory_base_url"
 validate "artifactory_username"
