@@ -7,10 +7,12 @@ on:
 jobs:
     test:
         runs-on: ubuntu-latest
+        env:
+            flex: ./flex.sh
         steps:
         - name: Checkout Source
           uses: actions/checkout@v2
           with:
             fetch-depth: 0
         - name: Provision
-          run: project_name=${{ github.event.inputs.projectName }} flex provision-project
+          run: project_name=${{ github.event.inputs.projectName }} $flex provision-project
