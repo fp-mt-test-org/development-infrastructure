@@ -21,7 +21,7 @@ else
     echo
 fi
 
-"${google_sdk_path}"/install.sh
+# "${google_sdk_path}"/install.sh
 
 # gcloud="${google_sdk_path}/bin/gcloud"
 
