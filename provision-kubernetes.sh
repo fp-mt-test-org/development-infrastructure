@@ -30,7 +30,5 @@ gcloud container clusters get-credentials cluster-1 --zone us-west1-a --project=
 
 kubectl get namespaces
 
-ls -la /usr/local/Cellar
-
 echo
 echo "Provisioning of Kubernetes completed successfully!"
