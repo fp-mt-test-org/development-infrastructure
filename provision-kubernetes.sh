@@ -76,7 +76,7 @@ mkdir -p "${gcloud_config_folder}"
 echo "${gcloud_config}" > "${gcloud_config_folder}/config_default"
 kubectl config view --kubeconfig "${config_path}"
 
-kubectl get namespaces --kubeconfig "${config_path}"
+kubectl cluster-info --kubeconfig "${config_path}"
 
 echo
 echo "Provisioning of Kubernetes completed successfully!"
