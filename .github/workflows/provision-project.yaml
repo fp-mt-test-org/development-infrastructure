@@ -41,6 +41,7 @@ jobs:
           with:
             path: |
               google-cloud-sdk
+              /usr/local/Cellar
             key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}            
         - name: Provision
           run: $flex provision-project
