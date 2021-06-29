@@ -17,6 +17,9 @@ jobs:
             artifactory_username: ${{ secrets.artifactory_username }}
             artifactory_password: ${{ secrets.artifactory_password }}
             
+            gcloud_account: ${{ secrets.gcloud_account }}
+            gcloud_project: ${{ secrets.gcloud_project }}
+
             k8s_user: ${{ secrets.k8s_user }}
             k8s_cluster_name: ${{ secrets.k8s_cluster_name }}
             k8s_cluster_server: ${{ secrets.k8s_cluster_server }}
