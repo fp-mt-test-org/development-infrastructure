@@ -46,6 +46,8 @@ docker run \
     hashicorp/terraform plan \
     -var="github_repo_name=${project_name}" \
     -var="artifactory_base_url=${artifactory_base_url}" \
+    -var="artifactory_username=${artifactory_username}" \
+    -var="artifactory_password=${artifactory_password}" \
     -out provision.plan
 
 echo
