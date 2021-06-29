@@ -36,8 +36,8 @@ fi
 # "${gcloud}" container clusters get-credentials cluster-1 --zone us-west1-a --project praxis-flight-317920
 brew install kubectl 
 
-
-config_path='~/.kube/config'
+kube_path='~/.kube'
+config_path="${kube_path}/config"
 echo "Writing ${config_path}"
 
 kube_config="apiVersion: v1
@@ -65,6 +65,7 @@ users:
         token-key: '{.credential.access_token}'
       name: gcp"
 
+mkdir -p "${kube_path}"
 echo "${kube_config}" > "${config_path}"
 
 kubectl get namespaces
