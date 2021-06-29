@@ -16,7 +16,6 @@ fi
 
 validate "project_name" 
 
-
 # ./provision-artifactory.sh # Commenting out for now to speed up testing of k8s.
 ./provision-kubernetes.sh
 
