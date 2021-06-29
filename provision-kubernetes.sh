@@ -36,7 +36,7 @@ fi
 # "${gcloud}" container clusters get-credentials cluster-1 --zone us-west1-a --project praxis-flight-317920
 brew install kubectl 
 
-kube_path='~/.kube'
+kube_path="$(realpath .kube)"
 config_path="${kube_path}/config"
 echo "Writing ${config_path}"
 
@@ -68,9 +68,9 @@ users:
 mkdir -p "${kube_path}"
 echo "${kube_config}" > "${config_path}"
 
-kubectl config view
+kubectl config view --kubeconfig "${kube_path}"
 
-kubectl get namespaces
+kubectl get namespaces --kubeconfig "${kube_path}"
 
 echo
 echo "Provisioning of Kubernetes completed successfully!"
