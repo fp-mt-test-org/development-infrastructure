@@ -9,14 +9,13 @@ echo "Installing gcloud..."
 google_sdk_path='./google-cloud-sdk'
 filename='google-cloud-sdk-346.0.0-darwin-x86_64.tar.gz'
 
-if [[ -d "${google_sdk_path}" ]]; then
+if ! [[ -d "${google_sdk_path}" ]]; then
     download_url="https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/${filename}"
     echo "Downloading ${download_url}"
     curl "${download_url}" --output "${filename}"
     tar -xzvf "${filename}"
 fi
 
-echo "Installing gcloud..."
 ./google-cloud-sdk/install.sh
 
 echo
