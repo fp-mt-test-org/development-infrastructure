@@ -7,7 +7,7 @@ terraform {
   }
 }
 
-variable "artifactory_url" {
+variable "artifactory_base_url" {
     type = string
 }
 
@@ -25,7 +25,7 @@ variable "github_repo_name" {
 
 # Configure the Artifactory provider
 provider "artifactory" {
-  url = "${var.artifactory_url}/artifactory"
+  url = "${var.artifactory_base_url}/artifactory"
   username = "${var.artifactory_username}"
   password = "${var.artifactory_password}"
 }
