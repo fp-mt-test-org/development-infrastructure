@@ -43,6 +43,11 @@ echo "terraform_path: $terraform_path"
 docker run \
     -w /tform \
     --volume "${terraform_path}:/tform" \
+    hashicorp/terraform init
+
+docker run \
+    -w /tform \
+    --volume "${terraform_path}:/tform" \
     hashicorp/terraform plan \
     -var="github_repo_name=${project_name}" \
     -var="artifactory_base_url=${artifactory_base_url}" \
