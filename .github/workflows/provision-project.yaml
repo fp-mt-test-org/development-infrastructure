@@ -1,15 +1,16 @@
 on: 
     workflow_dispatch:
       inputs:
-        logLevel:
-          description: 'Log level'     
+        projectName:
+          description: 'Name of the project to create.'     
           required: true
-          default: 'warning'
-        tags:
-          description: 'Test scenario tags'
 jobs:
     test:
         runs-on: ubuntu-latest
         steps:
-        - name: Testing
-          run: echo "Hello, World!"
+        - name: Checkout Source
+            uses: actions/checkout@v2
+            with:
+                fetch-depth: 0
+        - name: Provision
+          run: project_name=${{ github.event.inputs.projectName }} flex provision-project
