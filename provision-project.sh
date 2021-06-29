@@ -20,6 +20,22 @@ if [[ "${artifactory_base_url:=}" == "" ]]; then
     exit 1
 fi
 
+if [[ "${artifactory_username:=}" == "" ]]; then
+    echo "artifactory_username value is missing, please specify it to run:"
+    echo
+    echo "   artifactory_username=username ... flex provision-project"
+    echo
+    exit 1
+fi
+
+if [[ "${artifactory_password:=}" == "" ]]; then
+    echo "artifactory_password value is missing, please specify it to run:"
+    echo
+    echo "   artifactory_password=username ... flex provision-project"
+    echo
+    exit 1
+fi
+
 terraform_path="$(realpath ./terraform)"
 
 echo "terraform_path: $terraform_path"
