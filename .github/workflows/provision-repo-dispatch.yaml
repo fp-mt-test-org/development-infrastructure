@@ -10,7 +10,7 @@ on:
                 description: 'A valid provision token.'
                 required: true
 jobs:
-    test:
+    provision:
         runs-on: ubuntu-latest
         env:
             flex: ./flex.sh
