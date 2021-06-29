@@ -17,6 +17,10 @@ jobs:
             artifactory_username: ${{ secrets.artifactory_username }}
             artifactory_password: ${{ secrets.artifactory_password }}
             
+            k8s_cluster_name: ${{ secrets.k8s_cluster_name }}
+            k8s_cluster_server: ${{ secrets.k8s_cluster_server }}
+            k8s_cluster_certificate_authority_data: ${{ secrets.k8s_cluster_certificate_authority_data }}
+
             project_name: ${{ github.event.inputs.projectName }}
             
             provision_token: ${{ secrets.provision_token }}
