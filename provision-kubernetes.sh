@@ -68,7 +68,9 @@ users:
 mkdir -p "${kube_path}"
 echo "${kube_config}" > "${config_path}"
 
-kubectl config get-clusters
+kubectl config view
+
+kubectl get namespaces
 
 echo
 echo "Provisioning of Kubernetes completed successfully!"
