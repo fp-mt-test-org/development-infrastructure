@@ -23,12 +23,15 @@ fi
 
 brew install kubectl
 
+# Write the key to disc.
 key_file_path='key.json'
 echo "${gcloud_service_account}" > "${key_file_path}"
+
+# Use the key to get credentials.
 gcloud auth activate-service-account --key-file="${key_file_path}" --project="${gcloud_project}"
 gcloud container clusters get-credentials cluster-1 --zone us-west1-a --project="${gcloud_project}"
 
-kubectl get namespaces
+kubectl create namespace ${project_name}-dev --dry-run=client -o yaml | kubectl apply -f -
 
 echo
 echo "Provisioning of Kubernetes completed successfully!"
