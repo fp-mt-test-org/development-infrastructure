@@ -6,14 +6,6 @@ set -o nounset
 
 source ./scripts/validation-tools.sh
 
-validate "request_token"
-validate "provision_token"
-
-if [[ "${request_token}" != "${provision_token}" ]]; then
-    echo "Invalid request_token"
-    exit 1
-fi
-
 validate "project_name" 
 
 ./provision-artifactory.sh

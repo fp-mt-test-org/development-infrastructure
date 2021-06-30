@@ -1,14 +1,16 @@
-on: 
-    workflow_dispatch:
-      inputs:
-        projectName:
-          description: 'Name of the project to create.'     
-          required: true
-        requestToken:
-          description: 'A valid provision token.'
-          required: true
+on:
+    repository_dispatch:
+        types: [provision-project]
+        
+        inputs:
+            projectName:
+                description: 'Name of the project to create.'     
+                required: true
+            requestToken:
+                description: 'A valid provision token.'
+                required: true
 jobs:
-    test:
+    provision:
         runs-on: ubuntu-latest
         env:
             flex: ./flex.sh
@@ -26,10 +28,10 @@ jobs:
             k8s_cluster_server: ${{ secrets.k8s_cluster_server }}
             k8s_cluster_certificate_authority_data: ${{ secrets.k8s_cluster_certificate_authority_data }}
 
-            project_name: ${{ github.event.inputs.projectName }}
+            project_name: ${{ github.event.client_payload.project_name }}
             
             provision_token: ${{ secrets.provision_token }}
-            request_token: ${{ github.event.inputs.requestToken }}
+            request_token: ${{ github.event.client_payload.request_token }}
 
         steps:
         - name: Checkout Source
