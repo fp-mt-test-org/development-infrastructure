@@ -34,6 +34,8 @@ jobs:
             request_token: ${{ github.event.client_payload.request_token }}
 
         steps:
+        - name: Brew
+          run: brew --version
         - name: Checkout Source
           uses: actions/checkout@v2
           with:
