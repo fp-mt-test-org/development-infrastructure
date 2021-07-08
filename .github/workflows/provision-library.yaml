@@ -1,0 +1,41 @@
+name: Provision Library
+
+on:
+    repository_dispatch:
+        types: [provision-library]
+        
+        inputs:
+            projectName:
+                description: 'Name of the library to create.'     
+                required: true
+jobs:
+    provision:
+        runs-on: ubuntu-latest
+        env:
+            flex: ./flex.sh
+
+            artifactory_base_url: ${{ secrets.artifactory_base_url }}
+            artifactory_username: ${{ secrets.artifactory_username }}
+            artifactory_password: ${{ secrets.artifactory_password }}
+
+            project_name: ${{ github.event.client_payload.project_name }}
+            
+            provision_token: ${{ secrets.provision_token }}
+            request_token: ${{ github.event.client_payload.request_token }}
+
+        steps:
+        - name: Brew
+          run: brew --version
+        - name: Checkout Source
+          uses: actions/checkout@v2
+          with:
+            fetch-depth: 0
+        - name: Cache files
+          uses: actions/cache@v2
+          with:
+            path: |
+              google-cloud-sdk
+              /home/linuxbrew/.linuxbrew/Cellar
+            key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
+        - name: Provision
+          run: $flex provision-library

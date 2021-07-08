@@ -1,7 +1,9 @@
 flex:
   version: 0.5.6
   workflows:
-    provision-project:
-      command: ./provision-project.sh
+    provision-library:
+      command: ./project-archetypes/library/provision-new.sh
+    provision-service:
+      command: ./project-archetypes/service/provision-new.sh
 service:
   name: development-infrastructure

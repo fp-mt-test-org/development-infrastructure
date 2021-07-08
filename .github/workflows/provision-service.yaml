@@ -1,13 +1,12 @@
+name: Provision Service
+
 on:
     repository_dispatch:
-        types: [provision-project]
+        types: [provision-service]
         
         inputs:
             projectName:
-                description: 'Name of the project to create.'     
-                required: true
-            requestToken:
-                description: 'A valid provision token.'
+                description: 'Name of the service to create.'     
                 required: true
 jobs:
     provision:
@@ -46,6 +45,6 @@ jobs:
             path: |
               google-cloud-sdk
               /home/linuxbrew/.linuxbrew/Cellar
-            key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}            
+            key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
         - name: Provision
-          run: $flex provision-project
+          run: $flex provision-service
