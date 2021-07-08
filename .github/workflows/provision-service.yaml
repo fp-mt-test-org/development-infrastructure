@@ -27,14 +27,12 @@ jobs:
             k8s_cluster_server: ${{ secrets.k8s_cluster_server }}
             k8s_cluster_certificate_authority_data: ${{ secrets.k8s_cluster_certificate_authority_data }}
 
-            project_name: ${{ github.event.client_payload.project_name }}
+            service_name: ${{ github.event.client_payload.service_name }}
             
             provision_token: ${{ secrets.provision_token }}
             request_token: ${{ github.event.client_payload.request_token }}
 
         steps:
-        - name: Brew
-          run: brew --version
         - name: Checkout Source
           uses: actions/checkout@v2
           with:
