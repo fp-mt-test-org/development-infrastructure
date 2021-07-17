@@ -18,7 +18,7 @@ jobs:
             artifactory_username: ${{ secrets.artifactory_username }}
             artifactory_password: ${{ secrets.artifactory_password }}
 
-            project_name: ${{ github.event.client_payload.project_name }}
+            library_name: ${{ github.event.client_payload.library_name }}
             
             provision_token: ${{ secrets.provision_token }}
             request_token: ${{ github.event.client_payload.request_token }}
